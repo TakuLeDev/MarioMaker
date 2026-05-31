@@ -4,8 +4,9 @@ using UnityEngine;
 public class LevelInfoHolder : MonoBehaviour
 {
     //used to transfer already loaded info to the lvl scene and to get the missing values from the database
-    [HideInInspector] public string lvlName;
     [HideInInspector] public int lvlID;
+    [HideInInspector] public string lvlName;
+    [HideInInspector] public int lvlLikes;
     
     public static LevelInfoHolder instance;
 

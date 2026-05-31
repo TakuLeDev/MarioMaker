@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -17,7 +18,12 @@ public class LevelManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
     }
-    
+
+    private void OnEnable()
+    {
+        //ask for json with id from LevelInfoHolder.instance.lvlID
+    }
+
     public Tilemap tilemap;
 
     void Update() //test
@@ -25,7 +31,6 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) TilemapToString("testLevel");
         if (Input.GetKeyDown(KeyCode.E)) JsonToTilemap("testLevel");
     }
-    
     
     #region Converters
     
@@ -74,37 +79,6 @@ public class LevelManager : MonoBehaviour
         print("lvl loaded");
     }
     
-    #endregion
-    
-    
-    
-    #region RemoteSaves
-
-    void UploadLvlToRemote()
-    {
-        
-    }
-
-    void GetLvlJsonRemote()
-    {
-        
-    }
-    
-    void GetLvlInfosRemote()
-    {
-        
-    }
-
-    void UpdateLvlRemote() //calls the delete waits for a positive result and upload functions
-    {
-        
-    }
-    
-    void DeleteLvlRemote()
-    {
-        
-    }
-
     #endregion
     
     public class LevelData
