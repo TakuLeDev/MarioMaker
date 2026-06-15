@@ -1,12 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelInfoHolder : MonoBehaviour
 {
     //used to transfer already loaded info to the lvl scene and to get the missing values from the database
-    [HideInInspector] public int lvlID;
+    [HideInInspector] public string lvlID;
     [HideInInspector] public string lvlName;
     [HideInInspector] public int lvlLikes;
+    [HideInInspector] public string lvlJSON;
     
     public static LevelInfoHolder instance;
 

@@ -1,21 +1,14 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LvlButtonData : MonoBehaviour
 {
-    [HideInInspector] public int lvlID;
-    [HideInInspector] public string lvlName;
-    [HideInInspector] public int lvlLikes;
-    [SerializeField] TMP_Text lvlNameText;
-    [SerializeField] TMP_Text lvlLikesText;
-    
-    private void OnEnable()
-    {
-        lvlNameText.text = lvlName;
-        lvlLikesText.text = lvlLikes.ToString();
-    }
+    public string lvlID;
+    public string lvlName;
+    public int lvlLikes;
+    public TMP_Text lvlNameText;
+    public TMP_Text lvlLikesText;
 
     public void StartLvlButtonPlayMode()
     {

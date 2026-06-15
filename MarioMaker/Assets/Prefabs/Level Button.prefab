@@ -397,7 +397,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6821754020697144714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7721799236407309628}
+        m_TargetAssemblyTypeName: LvlButtonData, Assembly-CSharp
+        m_MethodName: StartLvlButtonPlayMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7721799236407309628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,8 +422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c59fee4cfc366eb48fb54639828b5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LvlButtonData
+  lvlID: 
   lvlName: 
-  lvlDescription: 0
+  lvlLikes: 0
+  lvlNameText: {fileID: 5530993967831755926}
+  lvlLikesText: {fileID: 507236662517652442}
 --- !u!114 &-4018660637850175464
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,16 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-using Application = UnityEngine.Application;
 
 public class LevelManager : MonoBehaviour
 {
-    
     public bool inEditMode = true;
-    [SerializeField] InputField inputField;
+    [SerializeField] TMP_InputField LevelNameField;
+    public Tilemap tilemap;
     
     public static LevelManager instance;
     private void Awake()
@@ -18,24 +17,39 @@ public class LevelManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
     }
-
+    
     private void OnEnable()
     {
-        //ask for json with id from LevelInfoHolder.instance.lvlID
+        StartCoroutine(AccountManager.instance.
+            GetLvlJson(LevelInfoHolder.instance.lvlID, (temp) =>
+            {
+                try {
+                    JsonToTilemap(temp);
+                }
+                catch (Exception e) {
+                    Debug.LogError("invalid json");
+                    throw;
+                }
+            }));
     }
 
-    public Tilemap tilemap;
-
-    void Update() //test
+    public void SaveLvl()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) TilemapToString("testLevel");
-        if (Input.GetKeyDown(KeyCode.E)) JsonToTilemap("testLevel");
+        if (LevelInfoHolder.instance.lvlID == "")
+        {
+            AccountManager.instance.StartCreateLevel(LevelNameField.text, LevelNameField.text);
+        }
+        else
+        {
+            AccountManager.instance.StartUpdateLvl(LevelNameField.text);
+        }
+        
     }
     
     #region Converters
-    
+
     // outputs a string of the tilemap data in a json representation
-    string TilemapToString(string desiredName)
+    public string TilemapToString()
     {
         BoundsInt bounds = tilemap.cellBounds;
         LevelData levelData = new LevelData();
@@ -55,23 +69,15 @@ public class LevelManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(levelData, true);
         return json;
-        /*File.WriteAllText(Application.dataPath +"/Saves/" + desiredName + ".json",json);
-        print("lvl saved");*/
     }
-    
+
     //loads level from targeted .json file
-    void JsonToTilemap(string targetFile)
+    public void JsonToTilemap(string json)
     {
-        
-        if (!File.Exists(Application.dataPath + "/Saves/" + targetFile))
-        {
-            print("no lvl saved"); return;
-        }
-        string json = File.ReadAllText(Application.dataPath +"/Saves/" + targetFile + ".json");
         LevelData lvlData = JsonUtility.FromJson<LevelData>(json);
         
         tilemap.ClearAllTiles();
-
+        
         for (int i = 0; i < lvlData.poses.Count; i++)
         {
             tilemap.SetTile(lvlData.poses[i], lvlData.tiles[i]);
@@ -88,6 +94,4 @@ public class LevelManager : MonoBehaviour
         public List<TileBase> tiles = new List<TileBase>();
         public List<Vector3Int> poses =  new List<Vector3Int>();
     }
-    
-    
 }

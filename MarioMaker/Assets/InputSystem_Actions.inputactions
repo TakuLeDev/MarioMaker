@@ -43,18 +43,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Save",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "a63ffe0e-3e4e-44e0-94c8-adede43e773b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Load",
-                    "type": "Button",
-                    "id": "b434b539-9666-4b38-9c8e-75c0c688e427",
+                    "id": "816e39f0-99f3-4df7-9275-010fb02c984b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -141,34 +132,23 @@
                 },
                 {
                     "name": "",
-                    "id": "aea74d4b-3c52-42ee-baa0-cdd97043156d",
-                    "path": "<Keyboard>/t",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Save",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "62923f04-4901-4ac2-a9e1-31edb8751ca2",
-                    "path": "<Keyboard>/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Load",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "461c8fd1-d6c4-425f-aacf-c8b78fef4b30",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Erase",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3b77ce1-4978-4e96-9d3b-c606ab492c09",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
